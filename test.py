@@ -66,7 +66,7 @@ if __name__ == '__main__':
     test_data[0].unsqueeze_(0)
     test_data[1].unsqueeze_(0)
 
-    df = pd.read_csv('test.csv')
+    df = pd.read_csv('myDraw.csv')
     img = ast.literal_eval(df['drawing'][args.img])
     s_img = draw.normalize_resample_simplify(img)
     # test_loader = torch.utils.data.DataLoader(

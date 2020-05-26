@@ -80,7 +80,7 @@ class TestDataSet:
         self.actual_points = actual_points
         self.padding = padding
 
-        self.df = pd.read_csv('test.csv', index_col='key_id')
+        self.df = pd.read_csv('myDraw.csv', index_col='key_id')
 
     def __len__(self):
         return len(self.df)
