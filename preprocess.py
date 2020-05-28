@@ -1,6 +1,69 @@
 import numpy as np
 import pandas as pd
 import torch
+import math
+from simplification.cutil import simplify_coords
+
+def resample(x, y, spacing=1.0):
+    output = []
+    n = len(x)
+    px = x[0]
+    py = y[0]
+    cumlen = 0
+    pcumlen = 0
+    offset = 0
+    for i in range(1, n):
+        cx = x[i]
+        cy = y[i]
+        dx = cx - px
+        dy = cy - py
+        curlen = math.sqrt(dx*dx + dy*dy)
+        cumlen += curlen
+        while offset < cumlen:
+            t = (offset - pcumlen) / curlen
+            invt = 1 - t
+            tx = px * invt + cx * t
+            ty = py * invt + cy * t
+            output.append((tx, ty))
+            offset += spacing
+        pcumlen = cumlen
+        px = cx
+        py = cy
+    output.append((x[-1], y[-1]))
+    return output
+
+
+def normalize_resample_simplify(strokes, epsilon=1.0, resample_spacing=1.0):
+    if len(strokes) == 0:
+        raise ValueError('empty image')
+
+    # find min and max
+    amin = None
+    amax = None
+    for x, y, _ in strokes:
+        cur_min = [np.min(x), np.min(y)]
+        cur_max = [np.max(x), np.max(y)]
+        amin = cur_min if amin is None else np.min([amin, cur_min], axis=0)
+        amax = cur_max if amax is None else np.max([amax, cur_max], axis=0)
+
+    # drop any drawings that are linear along one axis
+    arange = np.array(amax) - np.array(amin)
+    if np.min(arange) == 0:
+        raise ValueError('bad range of values')
+
+    arange = np.max(arange)
+    output = []
+    for x, y, _ in strokes:
+        xy = np.array([x, y], dtype=float).T
+        xy -= amin
+        xy *= 255.
+        xy /= arange
+        resampled = resample(xy[:, 0], xy[:, 1], resample_spacing)
+        simplified = simplify_coords(resampled, epsilon)
+        xy = np.around(simplified).astype(np.uint8)
+        output.append(xy.T.tolist())
+
+    return output
 
 
 def resample_to(drawing, n):
@@ -74,13 +137,27 @@ def process_raw(drawing, out_size, actual_points, padding):
     return points, indices
 
 
+def eval_single(drawing, out_size=512, actual_points=128, padding=16):      
+    data = [np.array(s) for s in drawing]
+    maximums = np.stack([s.max(1) for s in data]).max(0)
+    minimums = np.stack([s.min(1) for s in data]).min(0)
+    spatial_scale = max(maximums[0]-minimums[0], maximums[1]-minimums[1])
+    spatial_scale = spatial_scale if spatial_scale != 0 else 1
+    time_scale = maximums[2] - minimums[2]
+    time_scale = time_scale if time_scale != 0 else 1
+    scale = np.array([spatial_scale, spatial_scale, time_scale])
+    data = [(s - minimums[:, None])/scale[:, None] for s in data]
+    data = [np.clip(s*255, 0, 255) for s in data]
+
+    points, indices = process_raw(data, out_size, actual_points, padding)
+    return torch.from_numpy(points.astype(np.float32)), torch.from_numpy(indices)
+
 class TestDataSet:
-    def __init__(self, out_size=2048, actual_points=256, padding=16):
+    def __init__(self, out_size=512, actual_points=128, padding=16, csv='data_simplified/myDraw_simplified.csv'):
         self.out_size = out_size
         self.actual_points = actual_points
         self.padding = padding
-
-        self.df = pd.read_csv('myDraw.csv', index_col='key_id')
+        self.df = pd.read_csv(csv)
 
     def __len__(self):
         return len(self.df)
@@ -89,7 +166,6 @@ class TestDataSet:
         drawing = eval(self.df.iloc[item]['drawing'])
         data = [np.array(s) for s in drawing]
 
-        # This section is a little ugly. In my training code these steps were executed during database creation.
         maximums = np.stack([s.max(1) for s in data]).max(0)
         minimums = np.stack([s.min(1) for s in data]).min(0)
         spatial_scale = max(maximums[0]-minimums[0], maximums[1]-minimums[1])

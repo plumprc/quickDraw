@@ -1,19 +1,17 @@
 import warnings
 warnings.filterwarnings("ignore")
-import argparse
-import ast
-import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+import pandas as pd
 import torch
-import torch.utils.data
-
-import preprocess
 import models
+from preprocess import eval_single
+import matplotlib.pyplot as plt
+import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint', action='store', type=str, default='checkpoints/quickDraw_weights.pth')
 parser.add_argument('--img',type=int, default=0)
+parser.add_argument('--csv', type=str, default='myDraw_simplified.csv')
 args = parser.parse_args()
 
 CLASSES = ['The_Eiffel_Tower', 'The_Great_Wall_of_China', 'The_Mona_Lisa', 'airplane', 'alarm_clock', 'ambulance',
@@ -56,21 +54,14 @@ CLASSES = ['The_Eiffel_Tower', 'The_Great_Wall_of_China', 'The_Mona_Lisa', 'airp
 class_to_idx = {c: idx for idx, c in enumerate(CLASSES)}
 idx_to_class = {v: k for k, v in class_to_idx.items()}
 
-preds = []
-
 if __name__ == '__main__':
-    test_data_set = preprocess.TestDataSet()
-    test_data = list(test_data_set[args.img])
+    df = pd.read_csv("data_simplified/" + args.csv)
+    drawing = eval(df['drawing'][args.img])
 
+    test_data = list(eval_single(drawing))
     test_data[0].unsqueeze_(0)
     test_data[1].unsqueeze_(0)
 
-    df = pd.read_csv('data_simplified/myDraw_simplified.csv')
-    img = eval(df['drawing'][args.img])
-    s_img = preprocess.normalize_resample_simplify(img)
-    # test_loader = torch.utils.data.DataLoader(
-    #     test_data_set, batch_size=args.batch_size, shuffle=False, drop_last=False, num_workers=1)
-    
     model = models.strokes_to_seresnext50_32x4d(32, 2, 340)
     model.load_state_dict(torch.load(args.checkpoint))
     model.eval()
@@ -78,32 +69,16 @@ if __name__ == '__main__':
 
     with torch.no_grad():
         # batch = [b.cuda() for b in batch]
-        output = model(*test_data)
-        preds.append(output)
+        pred = model(*test_data)
 
-    p = []
-    for i in preds:
-        i = i.data.cpu().numpy()
-        p.append(i)
+    pred = pred.numpy()
+    pred = np.argsort(pred)
 
-    # np.save('test.npy', p[0])
-    pred = np.argsort(p[0])
     print(idx_to_class[pred[-1]], idx_to_class[pred[-2]], idx_to_class[pred[-3]])
 
-    plt.figure(figsize=(6,3))    
-    for x,y,t in img:
-        plt.subplot(1,2,1)
+    for x, y, t in drawing:
         plt.plot(x, y, marker='.')
         plt.axis('off')
-
-        plt.gca().invert_yaxis()
-        plt.axis('equal')
-
-    for x,y in s_img:
-        plt.subplot(1,2,2)
-        plt.plot(x, y, marker='.')
-        plt.axis('off')
-
         plt.gca().invert_yaxis()
         plt.axis('equal')
 
