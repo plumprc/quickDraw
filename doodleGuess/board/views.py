@@ -38,5 +38,5 @@ def process(request):
         pred = test(drawing)
         print(pred)
         pred = json.dumps(pred)
-        return render(request, 'board.html', {'pred': pred})
-    return render(request, 'board.html', {'pred': pred})
+        return HttpResponse(pred)
+    return HttpResponse("OK")

@@ -196,18 +196,13 @@ done.onclick = function () {
             beforeSend: function(xhr, settings) {
                 xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
             },
-            success: function (data) {
+            success: function (info) {
                 console.log("success");
-                console.log(draw_list);
+                console.log(info);
+                alert(info);
                 },
-            error: function (data) {
-                console.log("failed");
-                console.log(draw_list);
-            }
         });
     }
-    $("#mmp").html(233);
-    console.log(document.getElementById('pred').innerHTML)
 };
 
 function getColor(){
@@ -241,3 +236,4 @@ undo.onclick = function(){
     }
     draw_list.pop();
 };
+
