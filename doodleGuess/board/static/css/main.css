@@ -1,0 +1,883 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Roboto Mono', sans-serif;
+}
+
+.ui {
+    position: absolute;
+}
+
+.ui.tl {
+    left: 32px;
+    top: 22px;
+}
+
+.ui.tr {
+    right: 32px;
+    top: 22px;
+}
+
+.ui.bl {
+    left: 32px;
+    bottom: 22px;
+    max-width: calc(45% - 32px);
+}
+
+.ui.br {
+    right: 32px;
+    bottom: 22px;
+    max-width: calc(45% - 32px);
+}
+
+#splash {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#splash #splash-hero {
+    width: 90%;
+    max-width: 1000px;
+    max-height: 800px;
+    min-height: 70px;
+    margin-top: 70px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-grow: 20;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    [edition="woof"] #splash #splash-hero {
+        background-image: none;
+    }
+}
+
+@media screen and (max-height: 550px) {
+    [edition="woof"] #splash #splash-hero {
+        background-image: none;
+    }
+}
+
+@media screen and (max-height: 500px) and (min-width: 500px) {
+    #splash #splash-hero {
+        margin-top: 70px;
+    }
+}
+
+@media screen and (max-height: 550px) {
+    #splash #splash-hero {
+        background-image: none;
+        flex-grow: 3;
+    }
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #splash #splash-hero {
+        background-image: none;
+        flex-grow: 3;
+    }
+}
+
+@media screen and (max-height: 350px), screen and (max-width: 350px) {
+    #splash #splash-hero {
+        min-height: 40px;
+    }
+}
+
+@media screen and (max-height: 350px) and (min-width: 350px) {
+    #splash #splash-hero {
+        margin-top: 20px;
+    }
+}
+
+#splash #splash-hero-banner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #splash #splash-hero-banner {
+        padding-bottom: 160px;
+    }
+}
+
+@media screen and (max-height: 550px) {
+    #splash #splash-hero-banner {
+        padding-bottom: 90px;
+    }
+}
+
+#splash #splash-tag {
+    max-width: calc(100% - 64px);
+    padding: 40px 40px;
+    font-size: 27px;
+    flex-grow: 2;
+    position: relative;
+    z-index: 1;
+}
+
+@media screen and (max-height: 700px), screen and (max-width: 700px) {
+    #splash #splash-tag {
+        font-size: 22px;
+        padding: 15px 32px;
+    }
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #splash #splash-tag {
+        font-size: 18px;
+        padding: 15px 32px;
+    }
+}
+
+@media screen and (max-height: 350px), screen and (max-width: 350px) {
+    #splash #splash-tag {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-height: 500px) and (min-width: 500px) {
+    #splash #splash-tag {
+        max-width: 500px;
+    }
+}
+
+#splash #splash-tag #splash-tag-main {
+    display: block;
+    margin-bottom: 14px;
+}
+
+
+#splash #splash-tag #splash-tag-small {
+    margin: 0 auto;
+    display: block;
+    font-size: 0.75em;
+    max-width: 700px;
+    line-height: 1.4em;
+}
+
+#splash #splash-tag #splash-tag-small a {
+    color: #ffd139;
+}
+
+.corp-logo {
+    width: 495px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+@media screen and (max-height: 700px), screen and (max-width: 700px) {
+    .corp-logo {
+        height: 50px;
+    }
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    .corp-logo {
+        height: 30px;
+    }
+}
+
+#splash #privacy-link {
+    color: #dedede;
+    text-align: right;
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+}
+
+#splash #privacy-link a {
+    color: #dedede;
+    text-decoration: none;
+}
+
+#splash #privacy-link a:hover {
+    color: #cccccc;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #splash #privacy-link {
+        font-size: 13px;
+        width: 120px;
+    }
+
+    #splash #privacy-link .privacy-link-group {
+        clear: both;
+        float: right;
+        line-height: 1.4;
+        font-size: 10px;
+    }
+}
+
+#select-locale-label {
+    position: absolute;
+    background: white;
+    width: 140px;
+    overflow: hidden;
+    padding: 3px 3px 3px 30px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+    right: 0;
+    text-align: left;
+    height: 18px;
+    z-index: 1;
+}
+
+@media screen and (max-width: 750px) {
+    #select-locale-label {
+        display: block;
+        margin-right: 0;
+    }
+}
+
+/* Hidden content visible to screen readers */
+.offscreen {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#select-locale {
+    height: 26px;
+    width: 170px;
+    padding: 0;
+    opacity: 0;
+}
+
+#select-locale-label::before {
+    background-size: 100%;
+    content: '';
+    height: 12px;
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    z-index: 200;
+}
+
+#select-locale-label::after {
+    top: 50%;
+    border: solid transparent;
+    border-width: 0.25em 0.25em 0;
+    border-top-color: #CCCCCC;
+    margin: -0.125em 0.5em 0 0;
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+}
+
+#splash #privacy-link {
+    color: #dedede;
+    text-align: right;
+    font-family: 'Karla', sans-serif;
+    font-size: 15px;
+}
+
+#splash #privacy-link a {
+    color: #dedede;
+    text-decoration: none;
+}
+
+#splash #privacy-link a:hover {
+    color: #cccccc;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #splash #privacy-link {
+        font-size: 13px;
+        width: 120px;
+    }
+
+    #splash #privacy-link .privacy-link-group {
+        clear: both;
+        float: right;
+        line-height: 1.4;
+        font-size: 10px;
+    }
+}
+
+#splash .splash-screen-button {
+    padding: 40px 20px;
+    padding-bottom: 110px;
+    padding-top: 10px;
+    flex-grow: 0;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #splash .splash-screen-button {
+        padding: 0 20px 110px 20px;
+    }
+}
+
+@media screen and (max-height: 350px) and (min-width: 350px) {
+    #splash .splash-screen-button {
+        padding-bottom: 61px;
+    }
+}
+
+button {
+    background: none;
+    border: 0;
+}
+
+button:focus {
+    outline: none;
+}
+
+.button {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 50px;
+    width: 47px;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;
+    /* Konqueror */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+      not supported by any browser */
+    padding-top: 0;
+    padding-left: 6px;
+    padding-right: 3px;
+    padding-bottom: 18px;
+    background-repeat: no-repeat;
+    background-size: 94px 339px;
+    background-position: 0 0;
+    font-family: 'Roboto Mono', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.button.button-green {
+    background-position: 0 0;
+}
+
+.button.button-green:active {
+    background-position: -200px 0;
+}
+
+.button.button-yellow {
+    background-position: 0 -71px;
+}
+
+.button.button-yellow:active {
+    background-position: -200px -71px;
+}
+
+.button.button-close {
+    background-position: 0 -56px;
+}
+
+.button.button-close:active {
+    background-position: -53px -56px;
+}
+
+.button.button-pink {
+    background-position: 0 0;
+}
+
+.button.button-pink:active {
+    background-position: -53px 0;
+}
+
+.button.button-gray {
+    background-position: 0 -280px;
+}
+
+.button.button-gray:active {
+    background-position: -53px -280px;
+}
+
+.button.button-facebook {
+    background-position: 0 -168px;
+}
+
+.button.button-facebook:active {
+    background-position: -53px -168px;
+}
+
+.button.button-twitter {
+    background-position: 0 -112px;
+}
+
+.button.button-twitter:active {
+    background-position: -53px -112px;
+}
+
+.button.button-g {
+    background-position: 0 -224px;
+}
+
+.button.button-g:active {
+    background-position: -53px -224px;
+}
+
+.button.button-medium.button-gray {
+    background-position: 0 0;
+}
+
+.button.button-medium.button-gray:active {
+    background-position: -200px 0;
+}
+
+.button.button-toggle {
+    height: 58px;
+    width: 200px;
+    background-size: 100%;
+    padding-top: 0;
+    padding-left: 9px;
+    padding-right: 8px;
+}
+
+.button.button-green {
+    background-position: 0 0;
+}
+
+.button.button-green:active {
+    background-position: -200px 0;
+}
+
+.button.button-yellow {
+    background-position: 0 -71px;
+}
+
+.button.button-yellow:active {
+    background-position: -200px -71px;
+}
+
+.button:active {
+    padding-left: 3px;
+    padding-right: 9px;
+}
+
+.button:active span {
+    position: relative;
+    top: 9px;
+}
+
+.button.button-medium {
+    height: 58px;
+    width: 118px;
+    background-size: 400px 142px;
+    padding-top: 0;
+    padding-left: 9px;
+    padding-right: 8px;
+}
+
+.button.button-medium:active {
+    padding-right: 12px;
+}
+
+.button.button-medium:active span {
+    position: relative;
+    top: 8px;
+}
+
+.button.button-medium.button-yellow.current-lang {
+    background-position: -200px -71px;
+    padding-left: 3px;
+    padding-right: 9px;
+}
+
+.button.button-medium.button-yellow.current-lang span {
+    position: relative;
+    top: 9px;
+}
+
+.button.button-large {
+    height: 58px;
+    width: 200px;
+    background-size: 400px 142px;
+    padding-top: 0;
+    padding-left: 9px;
+    padding-right: 8px;
+}
+
+.button.button-large:active {
+    padding-left: 3px;
+}
+
+.button.button-large:active span {
+    position: relative;
+    top: 8px;
+}
+
+.button.button-medium span, .button.button-large span {
+    float: left;
+}
+
+.button.button-medium span.center, .button.button-large span.center {
+    float: none;
+}
+
+.button .tooltip {
+    position: absolute;
+    color: black;
+    text-align: left;
+    font-size: 35px;
+}
+
+.button#button-undo .tooltip {
+    top: -56px;
+    left: -90px;
+}
+
+.button#button-undo .tooltip .arrow-2 {
+    left: 47px;
+    top: 15px;
+}
+
+.button#button-clear .tooltip {
+    top: -87px;
+    left: -36px;
+}
+
+.button#button-clear .tooltip .arrow-3 {
+    left: 31px;
+    top: 25px;
+}
+
+.button#button-skip .tooltip {
+    top: -93px;
+    left: 42px;
+}
+
+.button#button-skip .tooltip .arrow-4 {
+    left: 10px;
+    top: 35px;
+}
+
+.button.button-close .tooltip {
+    top: 85px;
+    left: -26px;
+}
+
+.button.button-close .tooltip .arrow-1 {
+    left: 5px;
+    top: -40px;
+}
+
+.covercard {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: #ffd139;
+    left: 0;
+    top: -100%;
+    transition: top 0.8s ease-in-out, left 0.8s linear, width 0.8s linear, transform 0.8s linear;
+    font-size: 14px;
+    text-align: center;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.covercard a {
+    color: white;
+}
+
+.covercard .cards-cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    background-color: #ffd139;
+    display: none;
+}
+
+.covercard.visible {
+    top: 0;
+}
+
+.covercard.visible .cards-cover {
+    display: inherit;
+}
+
+.covercard .card-container {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 910px;
+    margin: 0 auto;
+}
+
+.covercard .card-container.fill {
+    height: 100%;
+}
+
+.covercard .card-headline, .covercard .card-row, .covercard .card-footer {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#about-card {
+    background-color: #ff7bac;
+    color: white;
+    font-size: 1.2em;
+}
+
+#about-card a {
+    color: white;
+}
+
+#about-card #about-card-text {
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#about-card #button-learn-more {
+    margin-top: 30px;
+}
+
+#about-card .card-text {
+    font-size: 0.8em;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #about-card .card-text {
+        font-size: 0.6em;
+    }
+}
+
+#about-card #about-video {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#about-card #about-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    .covercard .card-headline, .covercard .card-row, .covercard .card-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.covercard .card-headline {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-size: 38px;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    .covercard .card-headline {
+        font-size: 22.8px;
+        padding-top: 28px;
+        padding-right: 90px;
+        padding-left: 90px;
+    }
+}
+
+.covercard .card-headline.dynamic-headline-position {
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+    .covercard .card-headline.dynamic-headline-position {
+        padding: 40px 150px 20px 150px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .covercard .card-headline.dynamic-headline-position {
+        padding: 90px 10px 15px 10px;
+    }
+}
+
+.covercard .card-text {
+    font-size: 1.3em;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    .covercard .card-text {
+        font-size: 0.75em;
+    }
+}
+
+.covercard .card-text a {
+    color: black;
+}
+
+.covercard .card-row {
+    max-width: calc(100% - 40px);
+}
+
+.covercard .card-footer {
+    height: 20px;
+}
+
+#newround-card .card-headline {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+#newround-card #challengetext-level {
+    font-size: 18px;
+}
+
+#newround-card .card-text {
+    font-size: 1.5em;
+}
+
+#newround-card .card-text #challengetext-word {
+    font-size: 2em;
+}
+
+#newround-card .card-text #time-text {
+    margin-bottom: 40px;
+}
+
+@media screen and (max-height: 500px), screen and (max-width: 500px) {
+    #newround-card .card-text {
+        font-size: 1.5em;
+    }
+
+    #newround-card .card-text #time-text {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-height: 350px), screen and (max-width: 350px) {
+    #game .topbar #clock {
+        text-align: left;
+        margin-left: 20px;
+    }
+
+    #game .topbar #topbar-buttons {
+        right: 15px;
+        top: 12px;
+        position: absolute;
+        width: initial;
+        text-align: right;
+    }
+
+    #game .topbar #topbar-buttons .button-close {
+        position: initial;
+        right: initial;
+    }
+}
+
+.button#button-skip .tooltip {
+    top: -93px;
+    left: 42px;
+}
+
+.button#button-skip .tooltip .arrow-4 {
+    left: 10px;
+    top: 35px;
+}
+
+.button .icon {
+    display: inline-block;
+    background-size: 170px 26px;
+    width: 31px;
+    height: 26px;
+    margin-left: 1px;
+    margin-top: -3px;
+    margin-right: 5px;
+}
+
+.button .icon.icon-undo {
+    background-position: 2px 0;
+}
+
+.button .icon.icon-clear {
+    background-position: -54px 0;
+}
+
+.button .icon.icon-skip {
+    background-position: -26px 0;
+}
+
+.button .icon.icon-back {
+    background-position: -86px 1px;
+}
+
+#game #navigation #topbar-buttons {
+    right: 15px;
+    top: 12px;
+    position: absolute;
+}
+
+#game #topbar-buttons .button {
+    vertical-align: top;
+}
+
+#game #topbar-text {
+    color: rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    padding: 22px 50px 22px 22px;
+}
+
+#game #clock {
+    position: absolute;
+    top: 18px;
+    margin: auto auto;
+    left: 0;
+    right: 0;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+#game #clock #clock-time {
+    display: inline-block;
+    background-color: white;
+    padding: 4px 14px;
+    box-shadow: inset 1px 1px 0 1px rgba(0, 0, 0, 0.15);
+}
+
+#game #clock.text-blink {
+    color: #FF5000;
+}

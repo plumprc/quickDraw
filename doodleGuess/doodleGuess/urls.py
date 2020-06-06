@@ -16,11 +16,14 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
+from django.views.generic.base import RedirectView
 from board import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.draw),
+    path('draw/', views.draw),
+    path('', views.welcome),
     url(r'^board/$', views.process, name='board'),
+    url(r'^favicon.ico$', RedirectView.as_view(url=r'static/img/favicon.ico')),
 ]

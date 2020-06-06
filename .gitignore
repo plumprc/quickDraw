@@ -2,3 +2,4 @@ checkpoints
 train_simplified
 data_simplified
 venv
+quickDraw_weights.pth

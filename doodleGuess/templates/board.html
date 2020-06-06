@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="pred">mmp</div>
+</body>
+<script>
+    let pred = JSON.parse('{{ pred | safe }}');
+    document.getElementById('pred').innerHTML = pred;
+    console.log(pred);
+</script>
+</html>

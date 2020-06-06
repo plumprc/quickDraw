@@ -40,7 +40,7 @@ def normalize_resample_simplify(strokes, epsilon=1.0, resample_spacing=1.0):
     # find min and max
     amin = None
     amax = None
-    for x, y, _ in strokes:
+    for x, y in strokes:
         cur_min = [np.min(x), np.min(y)]
         cur_max = [np.max(x), np.max(y)]
         amin = cur_min if amin is None else np.min([amin, cur_min], axis=0)
@@ -53,7 +53,7 @@ def normalize_resample_simplify(strokes, epsilon=1.0, resample_spacing=1.0):
 
     arange = np.max(arange)
     output = []
-    for x, y, _ in strokes:
+    for x, y in strokes:
         xy = np.array([x, y], dtype=float).T
         xy -= amin
         xy *= 255.
@@ -137,7 +137,7 @@ def process_raw(drawing, out_size, actual_points, padding):
     return points, indices
 
 
-def eval_single(drawing, out_size=512, actual_points=128, padding=16):      
+def eval_single(drawing, out_size=512, actual_points=128, padding=16):
     data = [np.array(s) for s in drawing]
     maximums = np.stack([s.max(1) for s in data]).max(0)
     minimums = np.stack([s.min(1) for s in data]).min(0)
@@ -151,33 +151,3 @@ def eval_single(drawing, out_size=512, actual_points=128, padding=16):
 
     points, indices = process_raw(data, out_size, actual_points, padding)
     return torch.from_numpy(points.astype(np.float32)), torch.from_numpy(indices)
-
-class TestDataSet:
-    def __init__(self, out_size=512, actual_points=128, padding=16, csv='test_data_simplified.csv'):
-        self.out_size = out_size
-        self.actual_points = actual_points
-        self.padding = padding
-        self.df = pd.read_csv(csv)
-
-    def __len__(self):
-        return len(self.df)
-
-    def __getitem__(self, item):
-        drawing = eval(self.df.iloc[item]['drawing'])
-        data = [np.array(s) for s in drawing]
-
-        maximums = np.stack([s.max(1) for s in data]).max(0)
-        minimums = np.stack([s.min(1) for s in data]).min(0)
-        spatial_scale = max(maximums[0]-minimums[0], maximums[1]-minimums[1])
-        spatial_scale = spatial_scale if spatial_scale != 0 else 1
-        time_scale = maximums[2] - minimums[2]
-        time_scale = time_scale if time_scale != 0 else 1
-        scale = np.array([spatial_scale, spatial_scale, time_scale])
-        data = [(s - minimums[:, None])/scale[:, None] for s in data]
-        data = [np.clip(s*255, 0, 255) for s in data]
-
-        points, indices = process_raw(data, self.out_size, self.actual_points, self.padding)
-        return torch.from_numpy(points.astype(np.float32)), torch.from_numpy(indices)
-
-    def get_word(self, item):
-        return self.df.iloc[item]['word']

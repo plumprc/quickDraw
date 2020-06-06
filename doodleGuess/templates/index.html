@@ -5,16 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>涂鸦板</title>
+    <title>Doodle Guess!</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/font.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div id="navigation"></div>
     <canvas id="drawing-board"></canvas>
     <div class="color-group">
         <ul>
-            <li id="white" class="color-item" style="background-color: white;"></li>
             <li id="black" class="color-item active" style="background-color: black;"></li>
             <li id="red" class="color-item" style="background-color: #FF3333;"></li>
             <li id="blue" class="color-item" style="background-color: #0066FF;"></li>
@@ -33,7 +33,7 @@
         <button id="done" title="画完了！"><i class="iconfont icon-icon"></i></button>
     </div>
 </body>
-<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/draw.js' %}"></script>
 <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
 <script src="{% static 'js/jquery.cookie.js' %}"></script>
 </html>

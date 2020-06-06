@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>Doodle Guess!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        #splash-hero {
+            background-image: url("{% static 'img/hero.svg' %}");
+        }
+
+        #splash-hero-banner {
+            background-image: url("{% static 'img/banner.svg' %}");
+        }
+
+        .button.button-yellow, .button.button-green, .button.button-medium-gray {
+            background-image: url("{% static 'img/buttons_large.svg' %}");
+        }
+
+        .button.button-close, .button.button-pink, .button.button-gray, .button.button-facebook, .button.button-twitter, .button.button-g {
+            background-image: url("{% static 'img/buttons_small.svg' %}");
+        }
+
+        .corp-logo {
+            background: url("{% static 'img/mlx_badge.svg' %}") no-repeat;
+        }
+
+        #select-locale-label::before {
+            background: url("{% static 'img/globe.svg' %}") no-repeat;
+        }
+
+        .button .icon {
+            background: url("{% static 'img/icons.svg' %}") no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div id="splash">
+    <div id="splash-hero">
+        <div id="splash-hero-banner"></div>
+    </div>
+
+    <div id="splash-tag">
+        <span id="splash-tag-main">
+            <span>你乱画我瞎猜！</span>
+        </span>
+        <span id="splash-tag-small">
+            <a href="">test</a>
+        </span>
+    </div>
+    <div class="splash-screen-button">
+        <button id="button-play" class="button button-large button-yellow">
+            <span class="center">开始涂鸦吧！</span>
+        </button>
+    </div>
+    <div class="ui bl">
+        <a href="https://experiments.withgoogle.com/ai">
+            <div class="corp-logo"></div>
+        </a>
+    </div>
+    <div class="ui br" id="privacy-link">
+        <label id="select-locale-label" for="select-locale">
+            <span class="offscreen">Language:</span>
+            <span id="select-locale-value">English</span>
+        </label>
+        <select id="select-locale" style="visibility: visible; margin-bottom: 15px;">
+            <option value="en_US">English</option>
+            <option value="zh_CN">Chinese</option>
+        </select>
+        <div class="privacy-link-group">
+            <a href='//www.google.com/intl/zh-CN/policies/privacy/'>隐私权</a>和<a
+                href='//www.google.com/intl/zh-CN/policies/terms/'>条款</a>
+        </div>
+    </div>
+    <div class="ui tl">
+        <button id="button-about" class="button button-pink"><span>?</span></button>
+    </div>
+    <div class="ui tr" id="splash-screen-share">
+        <button id="share_twitter" class="button button-twitter"></button>
+        <button id="share_facebook" class="button button-facebook"></button>
+        <button id="exit" class="button button-gray"></button>
+    </div>
+</div>
+<!-- NEW ROUND -->
+<div id="newround-card" class="covercard">
+    <div class="card-container fill">
+        <div class="card-headline" id="challengetext-level">涂鸦 1/6</div>
+
+        <div class="card-row">
+            <div class="card-text">
+                {#                <div id="newround-skipped" class="handwritten">改画这个吧！<br>-</div>#}
+                {#                <div id="newround-timesup" class="handwritten">时间到，改画这个吧<br>-</div>#}
+                {#                <div id="newround-completed" class="handwritten">太棒了！<br>-</div>#}
+                <div id="newround-default" class="handwritten">画出</div>
+                <div id="challengetext-word">苹果</div>
+                <div id="time-text" class="handwritten">时间只有 20 秒</div>
+
+                <button id="button-newround-play" class="button button-large button-green">
+                    <span class="center">知道了！</span>
+                </button>
+            </div>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+    <!--<div class="peek-button" id="peek-button-card"></div>-->
+</div>
+
+<!-- ABOUT  -->
+<div id="about-card" class="covercard">
+    <div class="card-container fill">
+        <div class="card-row">
+            <div class="card-headline">
+                关于此游戏
+            </div>
+
+            <div id="about-card-text" class="card-text">
+                <p>This is a game built with machine learning. You draw, and a neural network tries to guess what you’re
+                    drawing. Of course, it doesn’t always work. But the more you play with it, the more it will learn.
+                    So far we have trained it on a few hundred concepts, and we hope to add more over time. We made this
+                    as an example of how you can use machine learning in fun ways. Watch the video below to learn about
+                    how it works, and <a href='https://aiexperiments.withgoogle.com/'>check out more A.I. Experiments
+                        here.</a></p>
+                <p>
+                <div id="about-video">
+                    <iframe src="//player.bilibili.com/player.html?aid=30468514&bvid=BV1xs411F7mu&cid=53167933&page=1"
+                            scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="ui tr">
+        <button id="close" class="button button-close"></button>
+    </div>
+</div>
+<div id="game" style="display: none">
+    <div id="navigation">
+        <div id="topbar-text">画出: 苹果</div>
+        <div id="clock" class="text-blink">
+            <div id="clock-time">00:20</div>
+        </div>
+        <div id="topbar-buttons">
+            <button class="button button-gray " id="button-skip">
+                <span class="icon icon-skip">▷▷</span>
+            </button>
+            <button class="button button-close" id="game-close"></button>
+        </div>
+    </div>
+
+    <canvas id="drawing-board"></canvas>
+    <div class="color-group">
+        <ul>
+            <li id="black" class="color-item active" style="background-color: black;"></li>
+            <li id="red" class="color-item" style="background-color: #FF3333;"></li>
+            <li id="blue" class="color-item" style="background-color: #0066FF;"></li>
+            <li id="yellow" class="color-item" style="background-color: #FFFF33;"></li>
+            <li id="green" class="color-item" style="background-color: #33CC66;"></li>
+            <li id="gray" class="color-item" style="background-color: gray;"></li>
+        </ul>
+    </div>
+    <div id="range-wrap"><input type="range" id="range" min="1" max="30" value="5" title="调整笔刷粗细"></div>
+    <div class="tools">
+        <button id="brush" class="active" title="画笔"><i class="iconfont icon-qianbi"></i></button>
+        <button id="eraser" title="橡皮擦"><i class="iconfont icon-xiangpi"></i></button>
+        <button id="clear" title="清空"><i class="iconfont icon-qingchu"></i></button>
+        <button id="undo" title="撤销"><i class="iconfont icon-chexiao"></i></button>
+        <button id="save" title="保存"><i class="iconfont icon-fuzhi"></i></button>
+        <button id="done" title="画完了！"><i class="iconfont icon-icon"></i></button>
+        <p id="mmp" style="width: 50px">{{ pred }}</p>
+    </div>
+</div>
+</body>
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<script src="{% static 'js/jquery.cookie.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/draw.js' %}"></script>
+</html>

@@ -1,14 +1,9 @@
-import argparse
-import numpy as np
+import os
 import torch
-import preprocess
+import numpy as np
 import models
-from tqdm import tqdm
-from tqdm._tqdm import trange
+from preprocess import eval_single
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--checkpoint', action='store', type=str, default='checkpoints/quickDraw_weights.pth')
-args = parser.parse_args()
 
 CLASSES = ['The_Eiffel_Tower', 'The_Great_Wall_of_China', 'The_Mona_Lisa', 'airplane', 'alarm_clock', 'ambulance',
            'angel', 'animal_migration', 'ant', 'anvil', 'apple', 'arm', 'asparagus', 'axe', 'backpack', 'banana',
@@ -50,38 +45,21 @@ CLASSES = ['The_Eiffel_Tower', 'The_Great_Wall_of_China', 'The_Mona_Lisa', 'airp
 class_to_idx = {c: idx for idx, c in enumerate(CLASSES)}
 idx_to_class = {v: k for k, v in class_to_idx.items()}
 
-if __name__ == '__main__':
-    test_data_set = preprocess.TestDataSet()
+
+def test(drawing):
+    test_data = list(eval_single(drawing))
+    test_data[0].unsqueeze_(0)
+    test_data[1].unsqueeze_(0)
+
     model = models.strokes_to_seresnext50_32x4d(32, 2, 340)
-    model.load_state_dict(torch.load(args.checkpoint))
+    path = os.path.dirname(os.path.abspath(__file__))
+    model.load_state_dict(torch.load(path + '/quickDraw_weights.pth', map_location=torch.device('cpu')))
     model.eval()
-    model.cuda()
-    acc1 = acc2 = acc3 = 0
-    for t in tqdm(range(len(test_data_set))):
-        test_data = list(test_data_set[t])
-        acc_word = test_data_set.get_word(t)
-        test_data[0].unsqueeze_(0)
-        test_data[1].unsqueeze_(0)
 
-        with torch.no_grad():
-            test_data = [b.cuda() for b in test_data]
-            pred = model(*test_data)
+    with torch.no_grad():
+        pred = model(*test_data)
 
-        pred = pred.cpu().numpy()
-        pred = np.argsort(pred)
+    pred = pred.numpy()
+    pred = np.argsort(pred)
 
-        if idx_to_class[pred[-1]] == acc_word:
-            acc1 += 1
-            acc2 += 1
-            acc3 += 1
-        elif idx_to_class[pred[-2]] == acc_word:
-            acc2 += 1
-            acc3 += 1
-        elif idx_to_class[pred[-3]] == acc_word:
-            acc3 += 1
-        else:
-            continue
-
-    print("first acc:", acc1 / len(test_data_set))
-    print("second acc:", acc2 / len(test_data_set))
-    print("third acc:", acc3 / len(test_data_set))
+    return idx_to_class[pred[-1]] + ' ' + idx_to_class[pred[-2]] + ' ' + idx_to_class[pred[-3]]

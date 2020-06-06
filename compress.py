@@ -73,10 +73,10 @@ def normalize_resample_simplify(strokes, epsilon=1.0, resample_spacing=1.0):
 
 
 if __name__ == '__main__':
-    df = pd.read_csv("test_simplified/" + args.csv)
+    df = pd.read_csv("data_simplified/" + args.csv)
     for t in tqdm(range(len(df))):
         draw = eval(df['drawing'][t])
-        draw = normalize_resample_simplify(draw)
+        # draw = normalize_resample_simplify(draw)
         cnt = 0
         for i in range(len(draw)):
             t_list = []

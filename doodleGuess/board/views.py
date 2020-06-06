@@ -1,6 +1,8 @@
 from django.shortcuts import HttpResponse, render
 import json
-import pandas as pd
+from utils.preprocess import normalize_resample_simplify
+from utils.eval import test
+
 
 # Create your views here.
 
@@ -9,22 +11,32 @@ def draw(request):
     return render(request, 'index.html')
 
 
-def process(request):
-    # print(request.POST['data'])
-    data = json.loads(request.body)
-    cnt = 0
-    drawing = []
-    for i in range(len(data)):
-        x_list = []
-        y_list = []
-        t_list = []
-        for pos in data[i]:
-            x_list.append(pos['x'])
-            y_list.append(pos['y'])
-            t_list.append(cnt * 0.1)
-            cnt = cnt + 1
-        drawing.append([x_list, y_list, t_list])
+def welcome(request):
+    return render(request, 'main.html')
 
-    df = pd.DataFrame({'key_id': cnt, 'countrycode': 'CN', 'drawing': str(drawing)}, index=[2])
-    df.to_csv("myDraw.csv", mode='a')
-    return HttpResponse("OK")
+
+def process(request):
+    if request.method == 'POST':
+        data = json.loads(request.body, strict=False)
+        drawing = []
+        for i in range(len(data)):
+            x_list = []
+            y_list = []
+            for pos in data[i]:
+                x_list.append(pos['x'])
+                y_list.append(pos['y'])
+            drawing.append([x_list, y_list])
+        drawing = normalize_resample_simplify(drawing)
+        cnt = 0
+        for i in range(len(drawing)):
+            t_list = []
+            for j in range((len(drawing[i][0]))):
+                t_list.append(cnt)
+                cnt += 1
+            drawing[i].append(t_list)
+        global pred
+        pred = test(drawing)
+        print(pred)
+        pred = json.dumps(pred)
+        return render(request, 'board.html', {'pred': pred})
+    return render(request, 'board.html', {'pred': pred})
