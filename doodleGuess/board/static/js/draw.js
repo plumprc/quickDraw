@@ -185,24 +185,7 @@ done.onclick = function () {
         draw_list.push(draw);
         draw = []
     }
-    if(draw_list.length === 0)
-        alert("您还没有作画哦~~");
-    else{
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: "/board/",
-            data: JSON.stringify(draw_list),
-            beforeSend: function(xhr, settings) {
-                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
-            },
-            success: function (info) {
-                console.log("success");
-                console.log(info);
-                alert(info);
-                },
-        });
-    }
+    predict(draw_list);
 };
 
 function getColor(){

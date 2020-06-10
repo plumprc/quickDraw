@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 import numpy as np
 import math
@@ -5,11 +6,7 @@ from tqdm import tqdm
 from tqdm._tqdm import trange
 from simplification.cutil import simplify_coords
 import time
-import argparse
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--csv', type=str, default='test_cp.csv')
-args = parser.parse_args()
 
 def resample(x, y, spacing=1.0):
     output = []
@@ -73,10 +70,10 @@ def normalize_resample_simplify(strokes, epsilon=1.0, resample_spacing=1.0):
 
 
 if __name__ == '__main__':
-    df = pd.read_csv("data_simplified/" + args.csv)
+    df = pd.read_csv(sys.argv[1])
     for t in tqdm(range(len(df))):
         draw = eval(df['drawing'][t])
-        # draw = normalize_resample_simplify(draw)
+        draw = normalize_resample_simplify(draw)
         cnt = 0
         for i in range(len(draw)):
             t_list = []
@@ -86,4 +83,4 @@ if __name__ == '__main__':
             draw[i].append(t_list)
         df.loc[t, 'drawing'] = str(draw)
     
-    df.to_csv(args.csv[:-4] + "_simplified.csv", index=False)
+    df.to_csv(sys.argv[1][:-4] + "_simplified.csv", index=False)

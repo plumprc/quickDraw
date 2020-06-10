@@ -36,7 +36,6 @@ def process(request):
             drawing[i].append(t_list)
         global pred
         pred = test(drawing)
-        print(pred)
         pred = json.dumps(pred)
         return HttpResponse(pred)
     return HttpResponse("OK")
