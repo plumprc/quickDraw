@@ -15,32 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/board/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            <state relative-caret-position="2565">
+              <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/board/static/js/draw.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="188" column="2" lean-forward="true" selection-start-line="188" selection-start-column="2" selection-end-line="188" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="173" column="6" lean-forward="true" selection-start-line="173" selection-start-column="6" selection-end-line="173" selection-end-column="6" />
-              <folding>
-                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="336">
+              <caret line="148" column="73" lean-forward="true" selection-start-line="148" selection-start-column="73" selection-end-line="148" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -48,11 +36,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/board/static/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="66" column="1" lean-forward="true" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
-              <folding>
-                <element signature="e#3076#3120#0" />
-              </folding>
+            <state relative-caret-position="405">
+              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/board/static/js/draw.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2702">
+              <caret line="236" column="2" lean-forward="true" selection-start-line="236" selection-start-column="2" selection-end-line="236" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -85,6 +79,7 @@
       <find>range-wrap</find>
       <find>pred</find>
       <find>text-blink</find>
+      <find>draw</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,10 +108,10 @@
         <option value="$PROJECT_DIR$/doodleGuess/settings.py" />
         <option value="$PROJECT_DIR$/board/views.py" />
         <option value="$PROJECT_DIR$/utils/eval.py" />
-        <option value="$PROJECT_DIR$/board/static/css/style.css" />
-        <option value="$PROJECT_DIR$/board/static/js/main.js" />
         <option value="$PROJECT_DIR$/board/static/js/draw.js" />
+        <option value="$PROJECT_DIR$/board/static/css/style.css" />
         <option value="$PROJECT_DIR$/templates/main.html" />
+        <option value="$PROJECT_DIR$/board/static/js/main.js" />
       </list>
     </option>
   </component>
@@ -304,16 +299,17 @@
       <workItem from="1591683085335" duration="1759000" />
       <workItem from="1591771948280" duration="406000" />
       <workItem from="1591775026220" duration="6008000" />
+      <workItem from="1591841071327" duration="9839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88183000" />
+    <option name="totallyTimeSpent" value="98022000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15683647" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15884718" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -553,44 +549,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/static/css/main.css">
+    <entry file="file://$PROJECT_DIR$/board/static/js/draw.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="881" column="19" lean-forward="true" selection-start-line="881" selection-start-column="19" selection-end-line="881" selection-end-column="19" />
+        <state relative-caret-position="2702">
+          <caret line="236" column="2" lean-forward="true" selection-start-line="236" selection-start-column="2" selection-end-line="236" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/board/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="66" column="1" lean-forward="true" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
-          <folding>
-            <element signature="e#3076#3120#0" />
-          </folding>
+        <state relative-caret-position="405">
+          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/static/js/main.js">
+    <entry file="file://$PROJECT_DIR$/board/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" column="10" lean-forward="true" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/board/static/js/draw.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="188" column="2" lean-forward="true" selection-start-line="188" selection-start-column="2" selection-end-line="188" selection-end-column="2" />
+        <state relative-caret-position="280">
+          <caret line="769" column="16" selection-start-line="769" selection-start-column="16" selection-end-line="769" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="173" column="6" lean-forward="true" selection-start-line="173" selection-start-column="6" selection-end-line="173" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="336">
+          <caret line="148" column="73" lean-forward="true" selection-start-line="148" selection-start-column="73" selection-end-line="148" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/static/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2565">
+          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
         </state>
       </provider>
     </entry>

@@ -24,6 +24,10 @@ let type = ['埃菲尔铁塔', '中国长城', '蒙娜丽莎', '飞机', '闹钟
     '拖拉机', '红绿灯', '火车', '树', '三角形', '长号', '卡车', '小号', '雨伞', '内衣', '厢式货车', '花瓶', '小提琴',
     '洗衣机', '西瓜', '滑水', '鲸鱼', '轮', '风车', '酒瓶', '酒杯', '腕表', '瑜伽', '斑马', '之字形'];
 
+let aim = "";
+let round = 1;
+let jump = false;
+
 function predict(drawing) {
     if (drawing.length === 0)
         alert("您还没有作画哦~~");
@@ -38,11 +42,36 @@ function predict(drawing) {
             },
             success: function (info) {
                 console.log("success");
-                console.log(info);
                 $("#pred").html(info);
+                info = info.split(" ");
+                for (let x = 0; x < info.length; x++) {
+                    if (info[x] === aim) {
+                        console.info("bingo!");
+                        break;
+                    }
+                }
             },
         });
     }
+}
+
+function init() {
+    $("#challengetext-level").html("涂鸦：" + round + "/6");
+    round++;
+    aim = type[Math.round(Math.random() * 339)];
+    $("#challengetext-word").html(aim);
+    $("#topbar-text").html("画出：" + aim);
+    $("#newround-card").toggleClass("visible");
+    $(".text-blink").css("color", "black");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setCanvasBg('white');
+    draw = [];
+    draw_list = [];
+    $("#pred").html("。。。。。。");
+}
+
+function end() {
+    alert("end!");
 }
 
 $("#button-about").click(function () {
@@ -54,16 +83,12 @@ $("#close").click(function () {
 });
 
 $("#button-play").click(function () {
-    let aim = type[Math.round(Math.random() * 339)];
-    $("#challengetext-word").html(aim);
-    $("#topbar-text").html("画出：" + aim);
-    $("#newround-card").toggleClass("visible");
-    $("#clock-time").html("00:20");
+    init();
 });
 
 $("#button-newround-play").click(function () {
+    $("#clock-time").html("00:20");
     $("#newround-card").toggleClass("visible");
-    $(".text-blink").css("color", "black");
     $("#game").show();
     $("#splash").hide();
     let interval = setInterval(() => {
@@ -76,6 +101,19 @@ $("#button-newround-play").click(function () {
             $(".text-blink").css("color", "#FF5000");
         if (time === "00:01") {
             console.info("end...");
+            if (round === 7) {
+                round = 1;
+                end();
+            } else init();
+            clearInterval(interval);
+        }
+        if (jump) {
+            jump = false;
+            console.info("jump...");
+            if (round === 7) {
+                round = 1;
+                end();
+            } else init();
             clearInterval(interval);
         }
     }, 1000);
@@ -86,6 +124,12 @@ $("#game-close").click(function () {
     setCanvasBg('white');
     draw = [];
     draw_list = [];
+    $("#pred").html("。。。。。。");
     $("#game").hide();
     $("#splash").show();
 });
+
+$("#button-skip").click(function(){
+    jump = true;
+});
+

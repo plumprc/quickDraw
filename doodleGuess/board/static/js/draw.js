@@ -62,6 +62,8 @@ function listenToUser(canvas) {
             lastPoint = {"x": x, "y": y};
             ctx.save();
             drawCircle(x, y, 0);
+
+            console.info("circle");
         };
         canvas.ontouchmove = function (e) {
             if (painting) {
@@ -70,6 +72,8 @@ function listenToUser(canvas) {
                 let newPoint = {"x": x, "y": y};
                 drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y);
                 lastPoint = newPoint;
+
+                console.info("line");
             }
         };
 
@@ -87,16 +91,18 @@ function listenToUser(canvas) {
             ctx.save();
             drawCircle(x, y, 0);
 
-            if(draw.length !== 0){
-                draw_list.push(draw);
-                draw = [];
-            }
+            // console.info("circle");
+            // if(draw.length !== 0){
+            //     draw_list.push(draw);
+            //     draw = [];
+            // }
         };
         canvas.onmousemove = function (e) {
             if (painting) {
                 let x = e.clientX;
                 let y = e.clientY;
                 let newPoint = {"x": x, "y": y};
+
                 draw.push(newPoint);
                 drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y,clear);
                 lastPoint = newPoint;
@@ -105,6 +111,12 @@ function listenToUser(canvas) {
 
         canvas.onmouseup = function () {
             painting = false;
+            console.info("画了一笔");
+            if(draw.length !== 0){
+                draw_list.push(draw);
+                draw = [];
+            }
+            predict(draw_list);
         };
 
         canvas.mouseleave = function () {
@@ -168,6 +180,7 @@ reSetCanvas.onclick = function () {
     setCanvasBg('white');
     draw = [];
     draw_list = [];
+    $("#pred").html("。。。。。。");
 };
 
 save.onclick = function () {
@@ -205,7 +218,7 @@ function getColor(){
 let historyDeta = [];
 
 function saveData (data) {
-    (historyDeta.length === 20) && (historyDeta.shift());// 上限为储存10步，太多了怕挂掉
+    (historyDeta.length === 20) && (historyDeta.shift());// 上限为储存 20 步，太多了怕挂掉
     historyDeta.push(data);
 }
 
@@ -218,5 +231,8 @@ undo.onclick = function(){
         draw = []
     }
     draw_list.pop();
+    if(draw_list.length === 0)
+        $("#pred").html("。。。。。。");
+    else predict(draw_list);
 };
 
