@@ -881,3 +881,65 @@ button:focus {
 #game #clock.text-blink {
     color: #FF5000;
 }
+
+
+#timesup-card #timesup-drawings-wrapper .timesup-round {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+}
+
+@media screen and (min-height: 500px) and (max-width: 500px) {
+    #timesup-card #timesup-drawings-wrapper .timesup-round {
+        margin: 5px;
+    }
+}
+
+#timesup-card #timesup-drawings-wrapper .timesup-drawing {
+    z-index: 100;
+    position: relative;
+}
+
+#timesup-card #timesup-drawings-wrapper .timesup-drawing .timesup-drawing-status {
+    font-size: 13px;
+    color: #cccccc;
+    top: 97px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    position: absolute;
+}
+
+#timesup-card #portfolio-text {
+    margin-bottom: 24px;
+}
+
+#timesup-card #button-timesup-play {
+    margin-top: 24px;
+}
+
+[lang="de"] #timesup-card #button-timesup-play {
+    font-size: 15px;
+}
+
+.button.button-drawing {
+    height: 140px;
+    width: 198px;
+    background-position: 0 0;
+    background-size: 400px 142px;
+    padding-top: 0px;
+    padding-left: 14px;
+    padding-right: 8px;
+}
+
+.button.button-drawing:active {
+    background-position: -200px 0;
+    padding-right: 12px;
+    padding-left: 10px;
+    padding-top: 8px;
+}
+
+.svg-margin-25 {
+    margin: 25px;
+}

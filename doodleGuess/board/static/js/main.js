@@ -25,12 +25,56 @@ let type = ['埃菲尔铁塔', '中国长城', '蒙娜丽莎', '飞机', '闹钟
     '洗衣机', '西瓜', '滑水', '鲸鱼', '轮', '风车', '酒瓶', '酒杯', '腕表', '瑜伽', '斑马', '之字形'];
 
 let aim = "";
+let aims = [];
+let aims_pred = [false, false, false, false, false, false];
 let round = 1;
 let jump = false;
 
+function canvas2svg(draw) {
+    let xmin = 1000, xmax = 0, ymin = 1000, ymax = 0;
+    let path = "";
+    for (let seg = 0; seg < draw.length; seg++) {
+        for (let p = 0; p < draw[seg].length; p++) {
+            xmin = Math.min(xmin, draw[seg][p].x);
+            xmax = Math.max(xmax, draw[seg][p].x);
+            ymin = Math.min(ymin, draw[seg][p].y);
+            ymax = Math.max(ymax, draw[seg][p].y);
+        }
+    }
+    let x_scale = xmax - xmin;
+    let y_scale = ymax - ymin;
+
+    if (x_scale > y_scale) {
+        if (x_scale / y_scale >= 2) {
+            y_scale = y_scale * 120 / x_scale;
+            x_scale = 120;
+        } else {
+            x_scale = x_scale * 60 / y_scale;
+            y_scale = 60;
+        }
+    } else {
+        x_scale = x_scale * 60 / y_scale;
+        y_scale = 60;
+    }
+
+    let x_m = (xmin + xmax) / 2 / (xmax - xmin) * x_scale;
+    let y_m = (ymin + ymax) / 2 / (ymax - ymin) * y_scale;
+
+    for (let seg = 0; seg < draw.length; seg++) {
+        path += 'M' + (draw[seg][0].x / (xmax - xmin) * x_scale - x_m + 65)
+            + ' ' + (draw[seg][0].y / (ymax - ymin) * y_scale - y_m + 35) + ' ';
+        for (let p = 1; p < draw[seg].length; p++) {
+
+            path += 'L' + (draw[seg][p].x / (xmax - xmin) * x_scale - x_m + 65)
+                + ' ' + (draw[seg][p].y / (ymax - ymin) * y_scale - y_m + 35) + ' ';
+        }
+    }
+    return path;
+}
+
 function predict(drawing) {
     if (drawing.length === 0)
-        alert("您还没有作画哦~~");
+        console.info("您还没有作画哦~~");
     else {
         $.ajax({
             type: "POST",
@@ -41,14 +85,15 @@ function predict(drawing) {
                 xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
             },
             success: function (info) {
-                console.log("success");
+                // console.log("success");
                 $("#pred").html(info);
                 info = info.split(" ");
-                for (let x = 0; x < info.length; x++) {
-                    if (info[x] === aim) {
-                        console.info("bingo!");
-                        break;
-                    }
+                if (info[0] === aim) {
+                    aims_pred[round - 2] = true;
+                    let audio = document.getElementById("audio");
+                    $("#pred").html("bingo! " + aim);
+                    audio.play();
+                    $("#button-skip").click();
                 }
             },
         });
@@ -59,6 +104,7 @@ function init() {
     $("#challengetext-level").html("涂鸦：" + round + "/6");
     round++;
     aim = type[Math.round(Math.random() * 339)];
+    aims.push(aim);
     $("#challengetext-word").html(aim);
     $("#topbar-text").html("画出：" + aim);
     $("#newround-card").toggleClass("visible");
@@ -70,8 +116,32 @@ function init() {
     $("#pred").html("。。。。。。");
 }
 
+function check() {
+    let cnt = 0;
+    for (let x = 0; x < aims.length; x++) {
+        if (aims_pred[x]) {
+            $("#type" + (x + 1)).html("√ " + aims[x]);
+            cnt++;
+        } else $("#type" + (x + 1)).html("✕ " + aims[x]);
+    }
+    if(cnt >= 5){
+        $("#timesup-title").html("画的很棒！(≧ω≦)");
+        $("#timesup-subtitle").html("AI 猜出了您画的 " + cnt + " 幅涂鸦~");
+    }
+    else if(cnt >= 3){
+        $("#timesup-title").html("画的不错！(*^▽^*)");
+        $("#timesup-subtitle").html("AI 猜出了您画的 " + cnt + " 幅涂鸦~");
+    }
+    else{
+        $("#timesup-title").html("继续加油！ヾ(°∀°ゞ)");
+        $("#timesup-subtitle").html("AI 猜出了您画的 " + cnt + " 幅涂鸦~");
+    }
+    aims = [];
+    aims_pred = [false, false, false, false, false, false];
+}
+
 function end() {
-    alert("end!");
+    $("#timesup-card").toggleClass("visible");
 }
 
 $("#button-about").click(function () {
@@ -102,18 +172,32 @@ $("#button-newround-play").click(function () {
         if (time === "00:01") {
             console.info("end...");
             if (round === 7) {
+                let path = canvas2svg(draw_list);
+                $("#svg" + (round - 1)).attr("d", path);
                 round = 1;
+                check();
                 end();
-            } else init();
+            } else {
+                let path = canvas2svg(draw_list);
+                $("#svg" + (round - 1)).attr("d", path);
+                init();
+            }
             clearInterval(interval);
         }
         if (jump) {
             jump = false;
             console.info("jump...");
             if (round === 7) {
+                let path = canvas2svg(draw_list);
+                $("#svg" + (round - 1)).attr("d", path);
                 round = 1;
+                check();
                 end();
-            } else init();
+            } else {
+                let path = canvas2svg(draw_list);
+                $("#svg" + (round - 1)).attr("d", path);
+                init();
+            }
             clearInterval(interval);
         }
     }, 1000);
@@ -129,7 +213,22 @@ $("#game-close").click(function () {
     $("#splash").show();
 });
 
-$("#button-skip").click(function(){
+$("#button-skip").click(function () {
     jump = true;
 });
 
+$("#button-timesup-play").click(function () {
+    $("#timesup-card").toggleClass("visible");
+    init();
+});
+
+$("#over-close").click(function(){
+    $("#timesup-card").toggleClass("visible");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setCanvasBg('white');
+    draw = [];
+    draw_list = [];
+    $("#pred").html("。。。。。。");
+    $("#game").hide();
+    $("#splash").show();
+});

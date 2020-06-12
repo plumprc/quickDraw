@@ -35,9 +35,14 @@
         .button .icon {
             background: url("{% static 'img/icons.svg' %}") no-repeat;
         }
+
+        .button.button-drawing {
+            background-image: url("{% static 'img/buttons_drawing.svg' %}");
+        }
     </style>
 </head>
 <body>
+<audio id="audio" src="{% static 'pred.ogg' %}"></audio>
 <div id="splash">
     <div id="splash-hero">
         <div id="splash-hero-banner"></div>
@@ -55,6 +60,11 @@
         <button id="button-play" class="button button-large button-yellow">
             <span class="center">开始涂鸦吧！</span>
         </button>
+        <a href="/lab/" target="_blank">
+            <button id="button-play-person" class="button button-large button-yellow">
+                <span class="center">涂鸦实验室！</span>
+            </button>
+        </a>
     </div>
     <div class="ui bl">
         <a href="https://experiments.withgoogle.com/ai">
@@ -67,7 +77,6 @@
             <span id="select-locale-value">English</span>
         </label>
         <select id="select-locale" style="visibility: visible; margin-bottom: 15px;">
-            <option value="en_US">English</option>
             <option value="zh_CN">Chinese</option>
         </select>
         <div class="privacy-link-group">
@@ -108,6 +117,103 @@
     <!--<div class="peek-button" id="peek-button-card"></div>-->
 </div>
 
+<!-- TIMES UP -->
+<div id="timesup-card" class="covercard">
+    <div class="card-container fill">
+        <div class="card-headline ">
+            <div id="timesup-title">画的很棒！(≧ω≦)</div>
+        </div>
+        <div class="card-row">
+            <div class="card-text" id="timesup-subtitle">AI 猜出了 6 幅涂鸦</div>
+        </div>
+        <div class="card-row">
+            <div id="timesup-drawings-wrapper">
+                <div class="timesup-round button button-drawing">
+                    <button class="timesup-drawing">
+                        <div id="type1" class="timesup-drawing-status">✕ 梯子</div>
+                        <svg width="130" height="70" class="svg-margin-25">
+                            <path id="svg1" d="M5 5 L5 65 L120 65 L120 5 L5 5" stroke="#000000"
+                                  stroke-width="1.8571428571428572"
+                                  stroke-linecap="round" fill="none"></path>
+                        </svg>
+                    </button>
+                    <div class="timesup-drawing-neighbor"></div>
+                </div>
+                <div class="timesup-round button button-drawing">
+                    <button class="timesup-drawing">
+                        <div id="type2" class="timesup-drawing-status">✕ 梯子</div>
+                        <svg width="130" height="70" class="svg-margin-25">
+                            <path id="svg2" d="M5 5 L5 65 L120 65 L120 5 L5 5" stroke="#000000"
+                                  stroke-width="1.8571428571428572"
+                                  stroke-linecap="round" fill="none"></path>
+                        </svg>
+                    </button>
+                    <div class="timesup-drawing-neighbor"></div>
+                </div>
+                <div class="timesup-round button button-drawing">
+                    <button class="timesup-drawing">
+                        <div id="type3" class="timesup-drawing-status">✕ 梯子</div>
+                        <svg width="130" height="70" class="svg-margin-25">
+                            <path id="svg3" d="M5 5 L5 65 L120 65 L120 5 L5 5" stroke="#000000"
+                                  stroke-width="1.8571428571428572"
+                                  stroke-linecap="round" fill="none"></path>
+                        </svg>
+                    </button>
+                    <div class="timesup-drawing-neighbor"></div>
+                </div>
+                <div class="timesup-round button button-drawing">
+                    <button class="timesup-drawing">
+                        <div id="type4" class="timesup-drawing-status">✕ 梯子</div>
+                        <svg width="130" height="70" class="svg-margin-25">
+                            <path id="svg4" d="M5 5 L5 65 L120 65 L120 5 L5 5" stroke="#000000"
+                                  stroke-width="1.8571428571428572"
+                                  stroke-linecap="round" fill="none"></path>
+                        </svg>
+                    </button>
+                    <div class="timesup-drawing-neighbor"></div>
+                </div>
+                <div class="timesup-round button button-drawing">
+                    <button class="timesup-drawing">
+                        <div id="type5" class="timesup-drawing-status">✕ 梯子</div>
+                        <svg width="130" height="70" class="svg-margin-25">
+                            <path id="svg5" d="M5 5 L5 65 L120 65 L120 5 L5 5" stroke="#000000"
+                                  stroke-width="1.8571428571428572"
+                                  stroke-linecap="round" fill="none"></path>
+                        </svg>
+                    </button>
+                    <div class="timesup-drawing-neighbor"></div>
+                </div>
+                <div class="timesup-round button button-drawing">
+                    <button class="timesup-drawing">
+                        <div id="type6" class="timesup-drawing-status">✕ 梯子</div>
+                        <svg width="130" height="70" class="svg-margin-25">
+                            <path id="svg6" d="M5 5 L5 65 L120 65 L120 5 L5 5" stroke="#000000"
+                                  stroke-width="1.8571428571428572"
+                                  stroke-linecap="round" fill="none"></path>
+                        </svg>
+                    </button>
+                    <div class="timesup-drawing-neighbor"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card-row" id="portfolio">
+            <div class="card-text">
+                <div id="portfolio-text">分享你的涂鸦作品</div>
+                <div>
+                    <button id="share_portfolio_twitter" class="button button-twitter"></button>
+                    <button id="share_portfolio_facebook" class="button button-facebook"></button>
+                </div>
+                <button id="button-timesup-play" class="button button-large button-green"><span
+                        class="center">再玩一次</span></button>
+            </div>
+        </div>
+        <div class="card-footer"></div>
+    </div>
+    <div class="ui tr">
+        <button id="over-close" class="button button-close"></button>
+    </div>
+</div>
+
 <!-- ABOUT  -->
 <div id="about-card" class="covercard">
     <div class="card-container fill">
@@ -136,6 +242,8 @@
         <button id="close" class="button button-close"></button>
     </div>
 </div>
+
+<!-- GAME  -->
 <div id="game" style="display: none">
     <div id="navigation">
         <div id="topbar-text">画出: 苹果</div>

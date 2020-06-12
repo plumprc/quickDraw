@@ -15,29 +15,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/board/static/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2565">
-              <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+            <state relative-caret-position="564">
+              <caret line="233" column="3" selection-start-line="233" selection-start-column="3" selection-end-line="233" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="148" column="73" lean-forward="true" selection-start-line="148" selection-start-column="73" selection-end-line="148" selection-end-column="73" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/board/static/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+            <state relative-caret-position="308">
+              <caret line="67" column="10" lean-forward="true" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -45,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/board/static/js/draw.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2702">
-              <caret line="236" column="2" lean-forward="true" selection-start-line="236" selection-start-column="2" selection-end-line="236" selection-end-column="2" />
+            <state relative-caret-position="-3852">
+              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -77,9 +68,15 @@
       <find>gameview</find>
       <find>.button .icon</find>
       <find>range-wrap</find>
-      <find>pred</find>
       <find>text-blink</find>
       <find>draw</find>
+      <find>done</find>
+      <find>svg</find>
+      <find>timesup-drawing</find>
+      <find>predict</find>
+      <find>pred</find>
+      <find>#pred</find>
+      <find>涂鸦</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -99,19 +96,20 @@
         <option value="$PROJECT_DIR$/utils/preprocess.py" />
         <option value="$PROJECT_DIR$/utils/models.py" />
         <option value="$PROJECT_DIR$/utils/points_to_image.py" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/board/static/js/test.js" />
-        <option value="$PROJECT_DIR$/board/static/css/main.css" />
-        <option value="$PROJECT_DIR$/doodleGuess/urls.py" />
         <option value="$PROJECT_DIR$/templates/board.html" />
         <option value="$PROJECT_DIR$/board/static/js/medium.js" />
         <option value="$PROJECT_DIR$/doodleGuess/settings.py" />
-        <option value="$PROJECT_DIR$/board/views.py" />
-        <option value="$PROJECT_DIR$/utils/eval.py" />
+        <option value="$PROJECT_DIR$/board/static/js/test.js" />
+        <option value="$PROJECT_DIR$/board/static/css/main.css" />
         <option value="$PROJECT_DIR$/board/static/js/draw.js" />
+        <option value="$PROJECT_DIR$/doodleGuess/urls.py" />
+        <option value="$PROJECT_DIR$/board/views.py" />
         <option value="$PROJECT_DIR$/board/static/css/style.css" />
-        <option value="$PROJECT_DIR$/templates/main.html" />
+        <option value="$PROJECT_DIR$/utils/eval.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/board/static/js/draw-person.js" />
         <option value="$PROJECT_DIR$/board/static/js/main.js" />
+        <option value="$PROJECT_DIR$/templates/main.html" />
       </list>
     </option>
   </component>
@@ -126,8 +124,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="130" />
-    <option name="y" value="45" />
+    <option name="x" value="537" />
+    <option name="y" value="66" />
     <option name="width" value="1500" />
     <option name="height" value="965" />
   </component>
@@ -165,6 +163,11 @@
             <path>
               <item name="doodleGuess" type="b2602c69:ProjectViewProjectNode" />
               <item name="doodleGuess" type="462c0819:PsiDirectoryNode" />
+              <item name="doodleGuess" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="doodleGuess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="doodleGuess" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -193,11 +196,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\[Base] Code\quickDraw\doodleGuess\board\static" />
       <recent name="F:\[Base] Code\quickDraw\doodleGuess\board\static\img" />
       <recent name="F:\[Base] Code\quickDraw\doodleGuess\static" />
       <recent name="F:\[Base] Code\quickDraw\doodleGuess" />
       <recent name="F:\[Base] Code\quickDraw\doodleGuess\board\utils" />
-      <recent name="F:\[Base] Code\quickDraw\doodleGuess\board" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\[Base] Code\quickDraw\doodleGuess\board\static" />
@@ -300,21 +303,26 @@
       <workItem from="1591771948280" duration="406000" />
       <workItem from="1591775026220" duration="6008000" />
       <workItem from="1591841071327" duration="9839000" />
+      <workItem from="1591853091691" duration="6848000" />
+      <workItem from="1591867298308" duration="2817000" />
+      <workItem from="1591877516231" duration="1430000" />
+      <workItem from="1591945471618" duration="892000" />
+      <workItem from="1591951617838" duration="16650000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98022000" />
+    <option name="totallyTimeSpent" value="126659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15884718" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1689008" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32931727" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29852745" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26506025" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39937106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -491,29 +499,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/static/js/test.js" />
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="37" selection-start-line="37" selection-end-line="37" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/board/static/img/globe.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/board/static/img/icons.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doodleGuess/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#635#667#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/board/static/js/medium.js" />
     <entry file="file://$PROJECT_DIR$/board/static/css/font.css">
@@ -529,58 +519,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/eval.py">
+    <entry file="file://$PROJECT_DIR$/board/static/js/test.js" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/media.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="67" column="83" lean-forward="true" selection-start-line="67" selection-start-column="83" selection-end-line="67" selection-end-column="83" />
+        <state relative-caret-position="126">
+          <caret line="123" column="16" selection-start-line="123" selection-start-column="16" selection-end-line="123" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doodleGuess/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#635#667#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/views.py">
+    <entry file="file://$PROJECT_DIR$/board/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/board/static/js/draw.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2702">
-          <caret line="236" column="2" lean-forward="true" selection-start-line="236" selection-start-column="2" selection-end-line="236" selection-end-column="2" />
+        <state relative-caret-position="166">
+          <caret line="880" column="13" selection-start-line="880" selection-start-column="13" selection-end-line="880" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/board/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
+          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/board/static/css/main.css">
+    <entry file="file://$PROJECT_DIR$/board/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="769" column="16" selection-start-line="769" selection-start-column="16" selection-end-line="769" selection-end-column="16" />
+        <state relative-caret-position="531">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/main.html">
+    <entry file="file://$PROJECT_DIR$/utils/eval.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="148" column="73" lean-forward="true" selection-start-line="148" selection-start-column="73" selection-end-line="148" selection-end-column="73" />
+        <state relative-caret-position="240">
+          <caret line="91" column="4" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/static/js/draw-person.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="255" column="1" lean-forward="true" selection-start-line="255" selection-start-column="1" selection-end-line="255" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/board/static/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+        <state relative-caret-position="564">
+          <caret line="233" column="3" selection-start-line="233" selection-start-column="3" selection-end-line="233" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/board/static/js/draw.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3852">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/phrase.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="67" column="10" lean-forward="true" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
         </state>
       </provider>
     </entry>

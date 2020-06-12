@@ -86,4 +86,25 @@ def test(drawing):
     pred = pred.numpy()
     pred = np.argsort(pred)
 
-    return idx_to_class[pred[-1]] + ' ' + idx_to_class[pred[-2]] + ' ' + idx_to_class[pred[-3]]
+    return idx_to_class[pred[-1]] + ' ' + idx_to_class[pred[-2]]
+
+
+def test_person(drawing):
+    test_data = list(eval_single(drawing))
+    test_data[0].unsqueeze_(0)
+    test_data[1].unsqueeze_(0)
+
+    model = models.strokes_to_seresnext50_32x4d(32, 2, 340)
+    path = os.path.dirname(os.path.abspath(__file__))
+    model.load_state_dict(torch.load(path + '/quickDraw_weights.pth', map_location=torch.device('cpu')))
+    model.eval()
+
+    with torch.no_grad():
+        pred = model(*test_data)
+
+    pred = pred.numpy()
+    pred = np.argsort(pred)
+
+    return '预测：' + idx_to_class[pred[-1]] + ' ' + idx_to_class[pred[-2]] + \
+        ' ' + idx_to_class[pred[-3]] + ' ' + idx_to_class[pred[-4]] + \
+        ' ' + idx_to_class[pred[-5]] + ' ' + idx_to_class[pred[-6]]

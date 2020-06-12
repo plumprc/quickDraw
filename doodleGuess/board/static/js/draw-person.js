@@ -115,7 +115,7 @@ function listenToUser(canvas) {
                 draw_list.push(draw);
                 draw = [];
             }
-            predict(draw_list);
+            predict_per(draw_list);
         };
 
         canvas.mouseleave = function () {
@@ -179,7 +179,7 @@ reSetCanvas.onclick = function () {
     setCanvasBg('white');
     draw = [];
     draw_list = [];
-    $("#pred").html("。。。。。。");
+    $("#pred_p").html("。。。。。。。。");
 };
 
 save.onclick = function () {
@@ -197,9 +197,7 @@ done.onclick = function () {
         draw_list.push(draw);
         draw = []
     }
-    let path = canvas2svg(draw_list);
-    $("#svg1").attr("d", path);
-    predict(draw_list);
+    predict_per(draw_list);
 };
 
 function getColor(){
@@ -233,7 +231,27 @@ undo.onclick = function(){
     }
     draw_list.pop();
     if(draw_list.length === 0)
-        $("#pred").html("。。。。。。");
-    else predict(draw_list);
+        $("#pred_p").html("。。。。。。。。");
+    else predict_per(draw_list);
 };
+
+function predict_per(drawing) {
+    if (drawing.length === 0)
+        alert("您还没有作画哦~~");
+    else {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/board_lab/",
+            data: JSON.stringify(drawing),
+            beforeSend: function (xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", $.cookie('csrftoken'));
+            },
+            success: function (info) {
+                console.log("success");
+                $("#pred_p").html(info);
+            },
+        });
+    }
+}
 

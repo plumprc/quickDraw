@@ -22,8 +22,9 @@ from board import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('draw/', views.draw),
+    path('lab/', views.draw),
     path('', views.welcome),
     url(r'^board/$', views.process, name='board'),
+    url(r'^board_lab/$', views.process_person, name='board_lab'),
     url(r'^favicon.ico$', RedirectView.as_view(url=r'static/img/favicon.ico')),
 ]
