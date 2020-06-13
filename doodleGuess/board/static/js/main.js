@@ -4,15 +4,15 @@ let type = ['埃菲尔铁塔', '中国长城', '蒙娜丽莎', '飞机', '闹钟
     '瓶盖', '蝴蝶结', '手镯', '脑', '面包', '桥', '西兰花', '扫帚', '水桶', '推土机', '公共汽车', '灌木', '蝴蝶',
     '仙人掌', '蛋糕', '计算器', '日历', '骆驼', '照相机', '伪装', '篝火', '蜡烛', '大炮', '独木舟', '汽车', '胡萝卜',
     '城堡', '猫', '吊扇', '手机', '大提琴', '椅子', '吊灯', '教堂', '圆圈', '单簧管', '时钟', '云', '咖啡杯', '指南针',
-    '计算机', '曲奇饼', '冷却器', '沙发', '奶牛', '蟹', '蜡笔', '鳄鱼', '王冠', '游轮', '杯子', '钻石', '洗碗机', '跳水板',
+    '计算机', '曲奇饼', '冰柜', '沙发', '奶牛', '蟹', '蜡笔', '鳄鱼', '王冠', '游轮', '杯子', '钻石', '洗碗机', '跳水板',
     '狗', '海豚', '甜甜圈', '门', '恶龙', '梳妆台', '钻头', '鼓', '鸭子', '哑铃', '耳朵', '肘部', '大象', '信封', '橡皮擦',
     '眼睛', '眼镜', '脸', '风扇', '羽毛', '栅栏', '手指', '消防栓', '壁炉', '消防车', '鱼', '火烈鸟', '手电筒', '人字拖',
     '落地灯', '花', '飞碟', '脚', '叉子', '青蛙', '煎锅', '灌溉橡皮管', '花园', '长颈鹿', '山羊胡', '高尔夫俱乐部', '葡萄',
-    '草', '吉他', '汉堡包', '铁锤', '手', '竖琴', '帽子', '耳机', '刺猬', '直升机', '头盔', '六角形', '冰球', '曲棍球棒',
+    '草', '吉他', '汉堡包', '铁锤', '手', '竖琴', '帽子', '耳机', '刺猬', '直升机', '头盔', '六边形', '冰球', '曲棍球棒',
     '马', '医院', '热气球', '热狗', '热水浴缸', '沙漏', '室内盆栽', '房子', '飓风', '冰淇淋', '夹克', '监狱', '袋鼠',
     '钥匙', '键盘', '膝部', '梯子', '灯笼', '笔记本电脑', '叶子', '腿', '灯泡', '灯塔', '闪电', '线', '狮子', '唇膏',
     '龙虾', '棒棒糖', '邮箱', '地图', '标记', '火柴', '扩音器', '美人鱼', '麦克风', '微波炉', '猴子', '月亮', '蚊子',
-    '摩托车', '山', '老鼠', '小胡子', '嘴巴', '马克杯', '蘑菇', '指甲', '项链', '鼻子', '海洋', '八角形', '章鱼', '洋葱',
+    '摩托车', '山', '老鼠', '小胡子', '嘴巴', '马克杯', '蘑菇', '指甲', '项链', '鼻子', '海洋', '八边形', '章鱼', '洋葱',
     '烤箱', '猫头鹰', '油漆罐', '画笔', '棕榈树', '熊猫', '裤子', '回形针', '降落伞', '鹦鹉', '护照', '花生', '梨', '豌豆',
     '铅笔', '企鹅', '钢琴', '皮卡车', '相框', '猪', '枕头', '菠萝', '披萨', '钳子', '警车', '池塘', '水塘', '冰棒', '明信片',
     '马铃薯', '电源插座', '钱包', '兔子', '浣熊', '收音机', '雨', '彩虹', '耙子', '遥控器', '犀牛', '河', '过山车', '溜冰鞋',
@@ -101,6 +101,11 @@ function predict(drawing) {
 }
 
 function init() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    setCanvasBg('white');
+    draw = [];
+    draw_list = [];
+    $("#pred").html("。。。。。。");
     $("#challengetext-level").html("涂鸦：" + round + "/6");
     round++;
     aim = type[Math.round(Math.random() * 339)];
@@ -109,11 +114,6 @@ function init() {
     $("#topbar-text").html("画出：" + aim);
     $("#newround-card").toggleClass("visible");
     $(".text-blink").css("color", "black");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    setCanvasBg('white');
-    draw = [];
-    draw_list = [];
-    $("#pred").html("。。。。。。");
 }
 
 function check() {
@@ -145,18 +145,26 @@ function end() {
 }
 
 $("#button-about").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     $("#about-card").toggleClass("visible");
 });
 
 $("#close").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     $("#about-card").toggleClass("visible");
 });
 
 $("#button-play").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     init();
 });
 
 $("#button-newround-play").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     $("#clock-time").html("00:20");
     $("#newround-card").toggleClass("visible");
     $("#game").show();
@@ -167,8 +175,11 @@ $("#button-newround-play").click(function () {
         if (second.length === 2) {
             $("#clock-time").html("00:" + second);
         } else $("#clock-time").html("00:0" + second);
-        if (time === "00:04")
+        if (time === "00:04" || time === "00:03" || time === "00:02"){
+            let audio_timer = document.getElementById("audio-timer");
+            audio_timer.play();
             $(".text-blink").css("color", "#FF5000");
+        }
         if (time === "00:01") {
             console.info("end...");
             if (round === 7) {
@@ -204,6 +215,8 @@ $("#button-newround-play").click(function () {
 });
 
 $("#game-close").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setCanvasBg('white');
     draw = [];
@@ -214,15 +227,21 @@ $("#game-close").click(function () {
 });
 
 $("#button-skip").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     jump = true;
 });
 
 $("#button-timesup-play").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     $("#timesup-card").toggleClass("visible");
     init();
 });
 
 $("#over-close").click(function(){
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
     $("#timesup-card").toggleClass("visible");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setCanvasBg('white');
@@ -231,4 +250,9 @@ $("#over-close").click(function(){
     $("#pred").html("。。。。。。");
     $("#game").hide();
     $("#splash").show();
+});
+
+$("#button-play-person").click(function () {
+    let audio_button = document.getElementById("audio-button");
+    audio_button.play();
 });

@@ -1,8 +1,8 @@
 import os
 import torch
 import numpy as np
-import models
-from preprocess import eval_single
+from utils import models
+from utils.preprocess import eval_single
 
 # CLASSES = ['The_Eiffel_Tower', 'The_Great_Wall_of_China', 'The_Mona_Lisa', 'airplane', 'alarm_clock', 'ambulance',
 #            'angel', 'animal_migration', 'ant', 'anvil', 'apple', 'arm', 'asparagus', 'axe', 'backpack', 'banana',

@@ -182,21 +182,21 @@ body {
 }
 
 .corp-logo {
-    width: 495px;
-    height: 70px;
+    width: 250px;
+    height: 90px;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
 @media screen and (max-height: 700px), screen and (max-width: 700px) {
     .corp-logo {
-        height: 50px;
+        height: 85px;
     }
 }
 
 @media screen and (max-height: 500px), screen and (max-width: 500px) {
     .corp-logo {
-        height: 30px;
+        height: 80px;
     }
 }
 

@@ -42,7 +42,9 @@
     </style>
 </head>
 <body>
-<audio id="audio" src="{% static 'pred.ogg' %}"></audio>
+<audio id="audio" src="{% static 'music/pred.ogg' %}"></audio>
+<audio id="audio-button" src="{% static 'music/button.ogg' %}"></audio>
+<audio id="audio-timer" src="{% static 'music/timer.wav' %}"></audio>
 <div id="splash">
     <div id="splash-hero">
         <div id="splash-hero-banner"></div>
@@ -53,7 +55,7 @@
             <span>你乱画我瞎猜！</span>
         </span>
         <span id="splash-tag-small">
-            <a href="">test</a>
+            您可以点击<a href="/board">可视化区域</a>观察数据集情况~
         </span>
     </div>
     <div class="splash-screen-button">
@@ -67,21 +69,20 @@
         </a>
     </div>
     <div class="ui bl">
-        <a href="https://experiments.withgoogle.com/ai">
+        <a href="https://www.baidu.com">
             <div class="corp-logo"></div>
         </a>
     </div>
     <div class="ui br" id="privacy-link">
         <label id="select-locale-label" for="select-locale">
             <span class="offscreen">Language:</span>
-            <span id="select-locale-value">English</span>
+            <span id="select-locale-value">Chinese</span>
         </label>
         <select id="select-locale" style="visibility: visible; margin-bottom: 15px;">
             <option value="zh_CN">Chinese</option>
         </select>
         <div class="privacy-link-group">
-            <a href='//www.google.com/intl/zh-CN/policies/privacy/'>隐私权</a>和<a
-                href='//www.google.com/intl/zh-CN/policies/terms/'>条款</a>
+            <span>@plumprc-doodle-guess</span>
         </div>
     </div>
     <div class="ui tl">
@@ -100,12 +101,12 @@
 
         <div class="card-row">
             <div class="card-text">
-                <div id="newround-skipped" class="handwritten">改画这个吧！<br>-</div>
-                <div id="newround-timesup" class="handwritten">时间到，改画这个吧<br>-</div>
-                <div id="newround-completed" class="handwritten">太棒了！<br>-</div>
-                <div id="newround-default" class="handwritten">画出</div>
+                <div id="newround-default" class="handwritten">请画出</div>
+                <br>
                 <div id="challengetext-word">苹果</div>
-                <div id="time-text" class="handwritten">时间只有 20 秒</div>
+                <br>
+                <div id="time-text" class="handwritten">时间只有 20 秒！</div>
+                <br>
 
                 <button id="button-newround-play" class="button button-large button-green">
                     <span class="center">知道了！</span>
@@ -198,11 +199,6 @@
         </div>
         <div class="card-row" id="portfolio">
             <div class="card-text">
-                <div id="portfolio-text">分享你的涂鸦作品</div>
-                <div>
-                    <button id="share_portfolio_twitter" class="button button-twitter"></button>
-                    <button id="share_portfolio_facebook" class="button button-facebook"></button>
-                </div>
                 <button id="button-timesup-play" class="button button-large button-green"><span
                         class="center">再玩一次</span></button>
             </div>
@@ -223,15 +219,16 @@
             </div>
 
             <div id="about-card-text" class="card-text">
-                <p>This is a game built with machine learning. You draw, and a neural network tries to guess what you’re
-                    drawing. Of course, it doesn’t always work. But the more you play with it, the more it will learn.
-                    So far we have trained it on a few hundred concepts, and we hope to add more over time. We made this
-                    as an example of how you can use machine learning in fun ways. Watch the video below to learn about
-                    how it works, and <a href='https://aiexperiments.withgoogle.com/'>check out more A.I. Experiments
-                        here.</a></p>
+                <p>灵感来源：<a href='https://www.bilibili.com/video/BV1zs411W7DV/'>
+                    【谜之声实况】你乱画，谷歌猜！Quick, Draw!</a><br>
+                    本游戏属于谷歌 quick draw 的仿站，部分功能的设计参考了原站的逻辑设计，部分美术素材直接取自于原网站。本网站的前后端
+                    代码均由本人独立完成，基于 pytorch 完成了模型的训练，训练模型为 SEResNeXt。<br>
+                    你可以在涂鸦模块体验本游戏，参照系统抽取的关键词绘制图像，由 AI 预测你绘制的正确与否。你也可以在涂鸦实验室任意涂鸦，
+                    系统将返回 AI 认为你绘制的图像内容，以下为演示视频。
+                </p>
                 <p>
                 <div id="about-video">
-                    <iframe src="//player.bilibili.com/player.html?aid=30468514&bvid=BV1xs411F7mu&cid=53167933&page=1"
+                    <iframe src="//player.bilibili.com/player.html?aid=7177804&bvid=BV1zs411W7DV&cid=11709401&page=1"
                             scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
                 </div>
                 </p>

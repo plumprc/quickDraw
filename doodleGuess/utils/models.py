@@ -3,8 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from pretrainedmodels.models.senet import pretrained_settings, SENet, SEResNeXtBottleneck, model_zoo
 
-from points_to_image import points_to_image
-import util
+from utils.points_to_image import points_to_image
+from utils import util
 
 
 def strokes_to_seresnext50_32x4d(img_size, window, num_classes):
