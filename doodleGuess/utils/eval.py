@@ -69,16 +69,16 @@ CLASSES = ['埃菲尔铁塔', '中国长城', '蒙娜丽莎', '飞机', '闹钟'
 class_to_idx = {c: idx for idx, c in enumerate(CLASSES)}
 idx_to_class = {v: k for k, v in class_to_idx.items()}
 
+model = models.strokes_to_seresnext50_32x4d(32, 2, 340)
+path = os.path.dirname(os.path.abspath(__file__))
+model.load_state_dict(torch.load(path + '/quickDraw_weights.pth', map_location=torch.device('cpu')))
+model.eval()
+
 
 def test(drawing):
     test_data = list(eval_single(drawing))
     test_data[0].unsqueeze_(0)
     test_data[1].unsqueeze_(0)
-
-    model = models.strokes_to_seresnext50_32x4d(32, 2, 340)
-    path = os.path.dirname(os.path.abspath(__file__))
-    model.load_state_dict(torch.load(path + '/quickDraw_weights.pth', map_location=torch.device('cpu')))
-    model.eval()
 
     with torch.no_grad():
         pred = model(*test_data)
@@ -94,11 +94,6 @@ def test_person(drawing):
     test_data[0].unsqueeze_(0)
     test_data[1].unsqueeze_(0)
 
-    model = models.strokes_to_seresnext50_32x4d(32, 2, 340)
-    path = os.path.dirname(os.path.abspath(__file__))
-    model.load_state_dict(torch.load(path + '/quickDraw_weights.pth', map_location=torch.device('cpu')))
-    model.eval()
-
     with torch.no_grad():
         pred = model(*test_data)
 
@@ -106,5 +101,5 @@ def test_person(drawing):
     pred = np.argsort(pred)
 
     return '预测：' + idx_to_class[pred[-1]] + ' ' + idx_to_class[pred[-2]] + \
-        ' ' + idx_to_class[pred[-3]] + ' ' + idx_to_class[pred[-4]] + \
-        ' ' + idx_to_class[pred[-5]] + ' ' + idx_to_class[pred[-6]]
+           ' ' + idx_to_class[pred[-3]] + ' ' + idx_to_class[pred[-4]] + \
+           ' ' + idx_to_class[pred[-5]] + ' ' + idx_to_class[pred[-6]]

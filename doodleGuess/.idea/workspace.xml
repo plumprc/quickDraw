@@ -18,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utils/eval.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="309">
+              <caret line="90" selection-start-line="90" selection-end-line="90" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -94,8 +94,8 @@
         <option value="$PROJECT_DIR$/board/static/js/main.js" />
         <option value="$PROJECT_DIR$/board/static/css/main.css" />
         <option value="$PROJECT_DIR$/templates/main.html" />
-        <option value="$PROJECT_DIR$/utils/eval.py" />
         <option value="$PROJECT_DIR$/utils/models.py" />
+        <option value="$PROJECT_DIR$/utils/eval.py" />
       </list>
     </option>
   </component>
@@ -109,9 +109,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="425" />
-    <option name="y" value="40" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="145" />
+    <option name="y" value="20" />
     <option name="width" value="1500" />
     <option name="height" value="965" />
   </component>
@@ -275,16 +275,18 @@
       <workItem from="1592024721829" duration="3784000" />
       <workItem from="1592031079996" duration="2117000" />
       <workItem from="1592033860069" duration="4639000" />
+      <workItem from="1592045975692" duration="1053000" />
+      <workItem from="1592356999683" duration="44000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139230000" />
+    <option name="totallyTimeSpent" value="140327000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="116" y="16" width="1200" height="772" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1769437" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23817864" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -569,8 +571,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/eval.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="309">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

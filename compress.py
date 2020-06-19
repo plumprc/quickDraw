@@ -84,3 +84,4 @@ if __name__ == '__main__':
         df.loc[t, 'drawing'] = str(draw)
     
     df.to_csv(sys.argv[1][:-4] + "_simplified.csv", index=False)
+    print("compression end...")

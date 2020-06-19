@@ -60,6 +60,7 @@ def process_person(request):
                 t_list.append(cnt)
                 cnt += 1
             drawing[i].append(t_list)
+
         global pred
         pred = test_person(drawing)
         pred = json.dumps(pred)

@@ -1,8 +1,4 @@
-前些天学习了`HTML5`的`<canvas>`元素，今天就来实践一下，用`canvas`做一个画板。
-
-![alt](https://zhoushuo.me/static/upload/20180314/upload_9bc7bb98d37ef1a75791b3b6cf88b1aa.png)
-
-首先说一下要实现的功能：
+要实现的功能：
 - 切换画笔颜色
 - 调整笔刷粗细
 - 清空画布
@@ -10,8 +6,6 @@
 - 撤销操作
 - 保存成图片
 - 兼容移动端（支持触摸）
-
-好了，废话少说，先看最终效果：[https://zhoushuozh.github.io/drawingborad](https://zhoushuozh.github.io/drawingborad)
 
 ### 准备工作
 首先，准备个容器,也就是画板了。
@@ -247,7 +241,3 @@ undo.onclick = function(){
 ```
 
 因为每次储存都是将一张图片存入内存，对性能影响较大，所以在这里设置了储存上限。
-
-### 总结
-这里用的知识点主要有：监听`mouse`、`touch`事件，以及`canvas`的`moveTo()`、`lineTo()`、`stroke()`、`clip()`、`clearRect()`等方法。我相信还有很多效果可以实现，比如说类似喷雾效果，铅笔字效果，艺术画效果，等等。日后有时间我会继续对这个画板进行优化，增加一些新的功能同时欢迎大家留言提问或者提出批评建议。
-
