@@ -71,7 +71,7 @@ idx_to_class = {v: k for k, v in class_to_idx.items()}
 
 model = models.strokes_to_seresnext50_32x4d(32, 2, 340)
 path = os.path.dirname(os.path.abspath(__file__))
-model.load_state_dict(torch.load(path + '/quickDraw_weights.pth', map_location=torch.device('cpu')))
+model.load_state_dict(torch.load(path + '/quickdraw.pth', map_location=torch.device('cpu')))
 model.eval()
 
 
