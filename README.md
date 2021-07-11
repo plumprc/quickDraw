@@ -1,2 +1,2 @@
 # quickDraw
-quickDraw derived from GoogleDraw
+quickDraw derived from [Google](https://quickdraw.withgoogle.com/)
