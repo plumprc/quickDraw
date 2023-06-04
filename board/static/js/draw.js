@@ -54,7 +54,7 @@ function listenToUser(canvas) {
 
     if (document.body.ontouchstart !== undefined) {
         canvas.ontouchstart = function (e) {
-            this.firstDot = ctx.getImageData(0, 0, canvas.width, canvas.height);//在这里储存绘图表面
+            this.firstDot = ctx.getImageData(0, 0, canvas.width, canvas.height);
             saveData(this.firstDot);
             painting = true;
             let x = e.touches[0].clientX;
@@ -82,7 +82,7 @@ function listenToUser(canvas) {
         }
     } else {
         canvas.onmousedown = function (e) {
-            this.firstDot = ctx.getImageData(0, 0, canvas.width, canvas.height);//在这里储存绘图表面
+            this.firstDot = ctx.getImageData(0, 0, canvas.width, canvas.height);
             saveData(this.firstDot);
             painting = true;
             let x = e.clientX;
@@ -219,7 +219,7 @@ function getColor(){
 let historyDeta = [];
 
 function saveData (data) {
-    (historyDeta.length === 20) && (historyDeta.shift());// 上限为储存 20 步，太多了怕挂掉
+    (historyDeta.length === 20) && (historyDeta.shift());
     historyDeta.push(data);
 }
 
@@ -236,4 +236,3 @@ undo.onclick = function(){
         $("#pred").html("。。。。。。");
     else predict(draw_list);
 };
-

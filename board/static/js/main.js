@@ -301,7 +301,7 @@ $("#b1").click(function () {
     let _type = $("#type1").text();
     _type = _type.substring(2, _type.length);
     let pos = type.indexOf(_type);
-    window.open("http://47.92.83.78:8000/country_s?para=" + type_en[pos]);
+    window.open("https://quickdraw.withgoogle.com/data/" + type_en[pos]);
 });
 
 $("#b2").click(function () {
@@ -310,7 +310,7 @@ $("#b2").click(function () {
     let _type = $("#type2").text();
     _type = _type.substring(2, _type.length);
     let pos = type.indexOf(_type);
-    window.open("http://47.92.83.78:8000/country_s?para=" + type_en[pos]);
+    window.open("https://quickdraw.withgoogle.com/data/" + type_en[pos]);
 });
 
 $("#b3").click(function () {
@@ -319,7 +319,7 @@ $("#b3").click(function () {
     let _type = $("#type3").text();
     _type = _type.substring(2, _type.length);
     let pos = type.indexOf(_type);
-    window.open("http://47.92.83.78:8000/country_s?para=" + type_en[pos]);
+    window.open("https://quickdraw.withgoogle.com/data/" + type_en[pos]);
 });
 
 $("#b4").click(function () {
@@ -328,7 +328,7 @@ $("#b4").click(function () {
     let _type = $("#type4").text();
     _type = _type.substring(2, _type.length);
     let pos = type.indexOf(_type);
-    window.open("http://47.92.83.78:8000/country_s?para=" + type_en[pos]);
+    window.open("https://quickdraw.withgoogle.com/data/" + type_en[pos]);
 });
 
 $("#b5").click(function () {
@@ -337,7 +337,7 @@ $("#b5").click(function () {
     let _type = $("#type5").text();
     _type = _type.substring(2, _type.length);
     let pos = type.indexOf(_type);
-    window.open("http://47.92.83.78:8000/country_s?para=" + type_en[pos]);
+    window.open("https://quickdraw.withgoogle.com/data/" + type_en[pos]);
 });
 
 $("#b6").click(function () {
@@ -346,5 +346,5 @@ $("#b6").click(function () {
     let _type = $("#type6").text();
     _type = _type.substring(2, _type.length);
     let pos = type.indexOf(_type);
-    window.open("http://47.92.83.78:8000/country_s?para=" + type_en[pos]);
+    window.open("https://quickdraw.withgoogle.com/data/" + type_en[pos]);
 });
